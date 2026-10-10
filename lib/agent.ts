@@ -6,7 +6,7 @@ import { allNotes, newId, now, saveRun, writeNotes, type CandidateNote } from '.
 import { coverage, expand, searchNotes } from './retrieve.ts';
 import { allowedHost, fetchPage, search, type Page } from './web.ts';
 import { answerProblems, NOT_FOUND, snippetFound } from './checks.ts';
-import type { AgentEvent, Answer, Note, Run, Sentence, Task } from './types.ts';
+import type { AgentEvent, Answer, Note, Run, Sentence, Task, WebPage } from './types.ts';
 
 type Emit = (e: AgentEvent) => void;
 const MAX_RESEARCH_TASKS = 3, PAGES_PER_TASK = 2;
@@ -14,7 +14,7 @@ const CONTENT_TYPES = ['Company', 'Product', 'Price', 'Campaign', 'Event'];
 const RELATIONS = ['makes', 'made_by', 'has_price', 'price_of', 'runs', 'run_by', 'promotes', 'promoted_by', 'attends', 'involves', 'competes_with'];
 
 export async function runAgent(question: string, mode: Run['mode'], emit: Emit): Promise<Run> {
-  const run: Run = { id: newId('run'), question, mode, created_at: now(), tasks: [], answer: null, new_note_ids: [] };
+  const run: Run = { id: newId('run'), question, mode, created_at: now(), tasks: [], answer: null, new_note_ids: [], web: [] };
   emit({ type: 'run', run_id: run.id });
   const tasks = () => emit({ type: 'tasks', tasks: run.tasks.map(t => ({ ...t })) });
   try {
@@ -27,6 +27,7 @@ export async function runAgent(question: string, mode: Run['mode'], emit: Emit):
 
     emit({ type: 'step', label: 'Searching the graph' });
     const gaps: Task[] = [];
+    const seen = new Set<string>(); // pages already handled in this run
     for (const t of run.tasks) {
       const hits = coverage(t, notes);
       if (hits.length) Object.assign(t, { status: 'done', detail: `${hits.length} note${hits.length === 1 ? '' : 's'} already in the graph` });
@@ -39,7 +40,8 @@ export async function runAgent(question: string, mode: Run['mode'], emit: Emit):
       t.status = 'running'; t.detail = 'Researching public sources'; tasks();
       emit({ type: 'step', label: `Researching: ${t.title}` });
       try {
-        const ids = await research(t, notes, label => { t.detail = label; tasks(); });
+        const ids = await research(t, notes, seen, label => { t.detail = label; tasks(); },
+          p => { run.web!.push(p); emit({ type: 'web', pages: [...run.web!] }); });
         run.new_note_ids.push(...ids.filter(id => !run.new_note_ids.includes(id)));
         notes = allNotes();
         Object.assign(t, ids.length ? { status: 'done', detail: `${ids.length} note${ids.length === 1 ? '' : 's'} added or updated` }
@@ -49,7 +51,8 @@ export async function runAgent(question: string, mode: Run['mode'], emit: Emit):
       }
       tasks();
     }
-    if (run.new_note_ids.length) emit({ type: 'notes', ids: run.new_note_ids });
+    // Notes travel with the events: on Vercel the next request may reach an instance without them.
+    if (run.new_note_ids.length) emit({ type: 'notes', ids: run.new_note_ids, notes });
 
     emit({ type: 'step', label: mode === 'report' ? 'Writing the report' : 'Writing the answer' });
     const seeds = new Map<string, Note>();
@@ -59,7 +62,7 @@ export async function runAgent(question: string, mode: Run['mode'], emit: Emit):
     const context = expand([...seeds.values()], notes, mode === 'report' ? 2 : 1).slice(0, 45);
     run.answer = await answer(question, mode, context, notes);
     saveRun(run);
-    emit({ type: 'answer', run });
+    emit({ type: 'answer', run, notes: allNotes() });
   } catch (e) {
     run.error = msg(e);
     emit({ type: 'error', message: run.error });
@@ -90,27 +93,39 @@ async function plan(question: string, mode: Run['mode'], notes: Note[]) {
 
 /* ---------- Researcher → Extractor → Validator → Graph writer ---------- */
 
-async function research(task: Task, notes: Note[], status: (s: string) => void): Promise<string[]> {
+async function research(task: Task, notes: Note[], seen: Set<string>, status: (s: string) => void, log: (p: WebPage) => void): Promise<string[]> {
   const hits = (await search(task.query)).filter(h => allowedHost(h.url));
   status(`Found ${hits.length} results`);
   const ids: string[] = [];
   let read = 0;
   for (const h of hits) {
     if (read >= PAGES_PER_TASK) break;
-    const page = await fetchPage(h.url);
-    if ('error' in page) { status(`Skipped ${new URL(h.url).hostname}: ${page.error}`); continue; }
+    if (seen.has(h.url)) continue;
+    seen.add(h.url);
+    const host = new URL(h.url).hostname;
+    const entry = { url: h.url, title: h.title || host, task: task.title };
+    const page = await fetchPage(h.url, { title: h.title, text: h.raw });
+    if ('error' in page) {
+      status(`Skipped ${host}: ${page.error}`);
+      log({ ...entry, status: /HTTP 4|robots|skipped/.test(page.error) ? 'blocked' : 'error', detail: page.error });
+      continue;
+    }
     read++;
-    status(`Reading ${new URL(page.url).hostname}`);
+    status(`Reading ${host}`);
+    const via = page.via ? ' (site blocked our server; used the search provider’s copy of the page)' : '';
     try {
       const ex = await extract(task, page, notes);
       const valid = await validate(ex.notes, page, ex.published_date);
-      if (!valid.length) continue;
+      if (!valid.length) { log({ ...entry, status: 'no_claims', detail: 'Read, but no claim passed validation' + via }); continue; }
       const res = writeNotes({ url: page.url, title: ex.source_title || page.title || h.title, source_type: ex.source_type || 'news',
         published_date: ex.published_date || h.page_age || '', cached_text: page.text, company: task.company ?? '' }, valid);
       ids.push(...res.created, ...res.updated);
+      const n = valid.reduce((k, c) => k + c.claims.length, 0);
+      log({ ...entry, title: ex.source_title || entry.title, status: 'saved', detail: `${n} verified claim${n === 1 ? '' : 's'} saved` + via, source_id: res.source_id });
       notes = allNotes();
     } catch (e) {
-      status(`Could not use ${new URL(page.url).hostname}: ${msg(e)}`); // one failing source never stops the run
+      status(`Could not use ${host}: ${msg(e)}`); // one failing source never stops the run
+      log({ ...entry, status: 'error', detail: msg(e) });
     }
   }
   return ids;
@@ -125,6 +140,7 @@ async function extract(task: Task, page: Page, notes: Note[]): Promise<Extractio
     maxTokens: 6000,
     system: 'You extract facts about the Malaysian car market from one web page into atomic knowledge-graph notes. Rules:\n' +
       '- Only facts stated on the page. Never add facts from memory.\n' +
+      '- Only facts that clearly apply to Malaysia (RM prices, Malaysian outlets, a .my or Malaysia page). If the page is about another country (e.g. USD prices, US-only offers), return no notes.\n' +
       '- evidence_snippet must be copied character-for-character from the page text: one contiguous span, 20–300 characters.\n' +
       '- Note types: Company (a brand\'s Malaysian operation), Product (a model), Price (one model\'s price in Malaysia, title "<model> price (MY)"), Campaign (a promotion), Event (a motor show).\n' +
       '- No notes about people, employees or general statistics.\n' +

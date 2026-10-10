@@ -2,10 +2,10 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import GraphView from './GraphView';
 import { citedSources, toMarkdown } from '@/lib/cite';
-import type { AgentEvent, Answer, Claim, Note, Run, Sentence, Task } from '@/lib/types';
+import type { AgentEvent, Answer, Claim, Note, Run, Sentence, Task, WebPage } from '@/lib/types';
 
 type View = 'chat' | 'graph' | 'report' | 'sources';
-interface Live { question: string; mode: Run['mode']; tasks: Task[]; step: string; run?: Run; error?: string; running: boolean }
+interface Live { question: string; mode: Run['mode']; tasks: Task[]; web: WebPage[]; step: string; run?: Run; error?: string; running: boolean }
 
 const SUGGESTIONS = [
   'How is BYD pricing against Toyota hybrids?',
@@ -54,12 +54,23 @@ export default function InsightApp() {
   const [fresh, setFresh] = useState<Set<string>>(new Set());
   const [toast, setToast] = useState('');
 
-  const loadNotes = useCallback(async () => setNotes((await (await fetch('/api/graph')).json()).notes), []);
+  // Merge rather than replace: on Vercel, notes a run just added may live on another server instance.
+  const mergeNotes = useCallback((incoming: Note[]) => setNotes(prev => {
+    const m = new Map(prev.map(n => [n.id, n]));
+    for (const n of incoming) m.set(n.id, n);
+    return [...m.values()];
+  }), []);
+  const loadNotes = useCallback(async () => mergeNotes((await (await fetch('/api/graph')).json()).notes), [mergeNotes]);
+  const addRuns = useCallback((incoming: Run[]) => setRuns(prev => {
+    const m = new Map(prev.map(r => [r.id, r]));
+    for (const r of incoming) m.set(r.id, r);
+    return [...m.values()].sort((a, b) => b.created_at.localeCompare(a.created_at));
+  }), []);
   const loadRuns = useCallback(async () => {
     const r: Run[] = (await (await fetch('/api/runs')).json()).runs;
-    setRuns(r);
+    addRuns(r);
     return r;
-  }, []);
+  }, [addRuns]);
   useEffect(() => {
     loadNotes();
     loadRuns().then(r => setChat(c => (c === 'new' ? r.find(x => x.mode === 'answer')?.id ?? 'new' : c)));
@@ -78,7 +89,7 @@ export default function InsightApp() {
 
   async function ask(question: string, mode: Run['mode'] = 'answer') {
     if (live?.running) { setToast('The agent is still working on the last question.'); return; }
-    const state: Live = { question, mode, tasks: [], step: 'Starting', running: true };
+    const state: Live = { question, mode, tasks: [], web: [], step: 'Starting', running: true };
     setLive(state); setChat('live'); setView('chat');
     const update = (p: Partial<Live>) => setLive(l => (l ? { ...l, ...p } : l));
     try {
@@ -98,11 +109,14 @@ export default function InsightApp() {
           const e = JSON.parse(line) as AgentEvent;
           if (e.type === 'step') update({ step: e.label });
           else if (e.type === 'tasks') update({ tasks: e.tasks });
-          else if (e.type === 'notes') { await loadNotes(); setFresh(new Set(e.ids)); setTimeout(() => setFresh(new Set()), 9000); }
+          else if (e.type === 'web') update({ web: e.pages });
+          else if (e.type === 'notes') { mergeNotes(e.notes); setFresh(new Set(e.ids)); setTimeout(() => setFresh(new Set()), 9000); }
           else if (e.type === 'error') update({ error: e.message });
           else if (e.type === 'answer') {
             update({ run: e.run });
-            await Promise.all([loadNotes(), loadRuns()]);
+            mergeNotes(e.notes);
+            addRuns([e.run]);
+            await loadRuns();
             if (mode === 'report') { setReportId(e.run.id); setView('report'); }
           }
         }
@@ -175,20 +189,41 @@ export default function InsightApp() {
     </div>
   );
 
-  const Rail = ({ a }: { a: Answer }) => {
-    const order = citedSources(a, claims);
+  /* Two parts: pages the agent found online in this run, then sources that were already in the graph. */
+  const Rail = ({ a, web, running }: { a?: Answer | null; web: WebPage[]; running?: boolean }) => {
+    const order = a ? citedSources(a, claims) : [];
+    const fromWeb = new Set(web.map(p => p.source_id).filter(Boolean));
+    const graph = order.filter(id => !fromWeb.has(id));
+    const LABEL = { saved: 'Saved', no_claims: 'No usable facts', blocked: 'Blocked', error: 'Failed' };
     return (
-      <aside className="rail" aria-label="Sources used">
-        <div className="cap">Sources used</div>
-        {order.map((id, i) => {
+      <aside className="rail" aria-label="Sources">
+        <div className="cap">New from the web · this run</div>
+        {web.length ? web.map((p, i) => {
+          const n = p.source_id ? order.indexOf(p.source_id) + 1 : 0;
+          const body = (
+            <>
+              <span className="no">{n || '·'}</span>
+              <span style={{ minWidth: 0 }}>
+                <span className="tt">{p.title}</span><br />
+                <span className={`wst ${p.status}`}>{LABEL[p.status]}</span>{' '}
+                <span className="st" style={{ overflowWrap: 'anywhere' }}>{new URL(p.url).hostname} · {p.detail}</span>
+              </span>
+            </>
+          );
+          return p.source_id
+            ? <button key={i} className="src-card" onClick={() => openSource(p.source_id!)}>{body}</button>
+            : <a key={i} className="src-card dim" href={p.url} target="_blank" rel="noopener noreferrer">{body}</a>;
+        }) : <div className="note-box">{running ? 'Searching… pages the agent reads online will appear here.' : 'None — everything needed was already in the graph, or research was not run.'}</div>}
+        <div className="cap" style={{ marginTop: 14 }}>From the graph</div>
+        {graph.length ? graph.map(id => {
           const s = byId.get(id);
           return (
             <button key={id} className="src-card" onClick={() => openSource(id)}>
-              <span className="no">{i + 1}</span>
+              <span className="no">{order.indexOf(id) + 1}</span>
               <span><span className="tt">{s?.title ?? id}</span><br /><span className="st">{s?.source_type} · {s?.published_date || 'undated'}</span></span>
             </button>
           );
-        })}
+        }) : <div className="note-box">{a ? 'No earlier sources cited.' : 'Appears with the answer.'}</div>}
       </aside>
     );
   };
@@ -205,7 +240,7 @@ export default function InsightApp() {
           {r?.answer && <AnswerCard a={r.answer} run={r} />}
           <Composer onAsk={q => ask(q)} />
         </section>
-        {r?.answer && <Rail a={r.answer} />}
+        <Rail a={r?.answer} web={live.web} running={live.running} />
       </div>
     );
   } else if (chatRun?.answer) {
@@ -217,7 +252,7 @@ export default function InsightApp() {
           <AnswerCard a={chatRun.answer} run={chatRun} />
           <Composer onAsk={q => ask(q)} />
         </section>
-        <Rail a={chatRun.answer} />
+        <Rail a={chatRun.answer} web={chatRun.web ?? []} />
       </div>
     );
   } else {
@@ -347,7 +382,7 @@ export default function InsightApp() {
         <section className="view" hidden={view !== 'sources'}>
           <header className="hd"><div><h1>Sources</h1><div className="sub">{sources.length} source notes</div></div></header>
           <div className="srcs-wrap">
-            {sources.map(s => {
+            {[...sources].sort((x, y) => (y.fetched_at ?? '').localeCompare(x.fetched_at ?? '')).map(s => {
               const n = notes.filter(o => o.claims.some(c => c.source_id === s.id)).length;
               return (
                 <div className="src-row" key={s.id}>

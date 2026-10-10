@@ -55,6 +55,16 @@ export interface Task {
   detail?: string;
 }
 
+/** A page the agent looked at online during a run, and what came of it. */
+export interface WebPage {
+  url: string;
+  title: string;
+  task: string;
+  status: 'saved' | 'no_claims' | 'blocked' | 'error';
+  detail: string;
+  source_id?: string;
+}
+
 export interface Run {
   id: string;
   question: string;
@@ -64,6 +74,7 @@ export interface Run {
   tasks: Task[];
   answer: Answer | null;
   new_note_ids: string[];
+  web?: WebPage[];
   error?: string;
 }
 
@@ -71,6 +82,7 @@ export type AgentEvent =
   | { type: 'run'; run_id: string }
   | { type: 'step'; label: string }
   | { type: 'tasks'; tasks: Task[] }
-  | { type: 'notes'; ids: string[] }
-  | { type: 'answer'; run: Run }
+  | { type: 'notes'; ids: string[]; notes: Note[] }
+  | { type: 'web'; pages: WebPage[] }
+  | { type: 'answer'; run: Run; notes: Note[] }
   | { type: 'error'; message: string };

@@ -157,8 +157,9 @@ const amounts = (s: string) => new Set([...s.matchAll(/RM\s?([\d,]{3,})/gi)].map
 
 /** Saves validated candidates from one source. Merges into existing notes instead of duplicating;
     notes left with zero claims are not saved. Returns ids of notes created or changed. */
-export function writeNotes(source: SourceInput, candidates: CandidateNote[], db = getDb()): { created: string[]; updated: string[] } {
+export function writeNotes(source: SourceInput, candidates: CandidateNote[], db = getDb()): { created: string[]; updated: string[]; source_id?: string } {
   const created: string[] = [], updated: string[] = [];
+  let sourceId: string | undefined;
   db.transaction(() => {
     const notes = allNotes(db);
     let src = notes.find(n => n.type === 'Source' && n.url === source.url);
@@ -179,7 +180,7 @@ export function writeNotes(source: SourceInput, candidates: CandidateNote[], db 
     const touched: { note: Note | { id: string }; cand: CandidateNote }[] = [];
     for (const cand of candidates) {
       if (!cand.claims.length) continue;
-      const srcId = ensureSource();
+      const srcId = sourceId = ensureSource();
       const existing = findExisting(cand, notes);
       let noteId: string;
       if (existing) {
@@ -209,7 +210,7 @@ export function writeNotes(source: SourceInput, candidates: CandidateNote[], db 
       }
     }
   })();
-  return { created, updated };
+  return { created, updated, source_id: sourceId };
 }
 
 function insertClaim(db: DB, noteId: string, c: CandidateNote['claims'][number], srcId: string, existing?: Note) {

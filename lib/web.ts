@@ -8,21 +8,21 @@ const UA = 'InsightResearchBot/0.1 (hackathon demo; respects robots.txt)';
 // LinkedIn: official API only, never fetched. Other sites here need logins.
 const SKIP = /(^|\.)(linkedin\.com|facebook\.com|instagram\.com|x\.com|twitter\.com|tiktok\.com)$/i;
 
-export interface SearchHit { url: string; title: string; page_age?: string }
+export interface SearchHit { url: string; title: string; page_age?: string; raw?: string }
 
 /** Web search via the Tavily API (TAVILY_API_KEY), boosted to Malaysian results. */
 export async function search(query: string): Promise<SearchHit[]> {
-  return cached(hashKey('search', query), async () => {
+  return cached(hashKey('search-raw', query), async () => {
     if (!process.env.TAVILY_API_KEY) throw new Error('TAVILY_API_KEY is not set, so the agent cannot search the web');
     const res = await fetch('https://api.tavily.com/search', {
       method: 'POST',
       headers: { 'content-type': 'application/json', authorization: `Bearer ${process.env.TAVILY_API_KEY}` },
-      body: JSON.stringify({ query, topic: 'general', country: 'malaysia', search_depth: 'basic', max_results: 8 }),
+      body: JSON.stringify({ query, topic: 'general', country: 'malaysia', search_depth: 'basic', max_results: 8, include_raw_content: 'text' }),
       signal: AbortSignal.timeout(30_000),
     });
     if (!res.ok) throw new Error(`Search failed: HTTP ${res.status}`);
-    const data = (await res.json()) as { results?: { url: string; title: string; published_date?: string | null }[] };
-    return (data.results ?? []).map(r => ({ url: r.url, title: r.title, page_age: r.published_date ?? undefined }));
+    const data = (await res.json()) as { results?: { url: string; title: string; published_date?: string | null; raw_content?: string | null }[] };
+    return (data.results ?? []).map(r => ({ url: r.url, title: r.title, page_age: r.published_date ?? undefined, raw: r.raw_content?.slice(0, 200_000) || undefined }));
   });
 }
 
@@ -81,10 +81,12 @@ export function htmlToText(html: string): string {
     .trim();
 }
 
-export interface Page { url: string; title: string; text: string }
+export interface Page { url: string; title: string; text: string; via?: 'search provider' }
 
-/** Fetches a public page as text. Never throws: returns { error } when skipped, blocked by robots.txt or broken. */
-export async function fetchPage(url: string): Promise<Page | { error: string }> {
+/** Fetches a public page as text. Never throws: returns { error } when skipped, blocked by robots.txt or broken.
+    When the site refuses our server (e.g. HTTP 403 to cloud IPs) but robots.txt allows the page, the page text the
+    search provider already returned for this result is used instead. */
+export async function fetchPage(url: string, fallback?: { title: string; text?: string }): Promise<Page | { error: string }> {
   if (!allowedHost(url)) return { error: 'skipped: login or social site' };
   try {
     if (!(await robotsAllows(url))) return { error: 'blocked by robots.txt' };
@@ -98,6 +100,9 @@ export async function fetchPage(url: string): Promise<Page | { error: string }> 
       return { url: res.url || url, title, text: htmlToText(html).slice(0, 200_000) };
     });
   } catch (e) {
-    return { error: e instanceof Error ? e.message : String(e) };
+    const error = e instanceof Error ? e.message : String(e);
+    if (fallback?.text && fallback.text.length > 300 && !/unsupported/.test(error))
+      return { url, title: fallback.title, text: fallback.text, via: 'search provider' };
+    return { error };
   }
 }
