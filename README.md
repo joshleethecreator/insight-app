@@ -1,5 +1,7 @@
 # Insight — Competitor Intelligence Graph Agent
 
+**Live demo:** https://insight-app-teal.vercel.app
+
 A car dealership owner asks anything ("Tesla", "How should we compete on EV pricing?").
 The agent plans tasks, checks the knowledge graph, researches public sources for gaps,
 saves atomic linked notes, and answers with a citation on every sentence.
