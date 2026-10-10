@@ -8,6 +8,7 @@ type View = 'chat' | 'graph' | 'report' | 'sources';
 interface Live { question: string; mode: Run['mode']; tasks: Task[]; web: WebPage[]; step: string; run?: Run; error?: string; running: boolean }
 
 const SUGGESTIONS = [
+  'What is BYD’s marketing campaign strategy right now?',
   'How is BYD pricing against Toyota hybrids?',
   'What did Perodua change on the QV-E this year?',
   'Which brands are running promotions right now?',
@@ -73,7 +74,7 @@ export default function InsightApp() {
   }, [addRuns]);
   useEffect(() => {
     loadNotes();
-    loadRuns().then(r => setChat(c => (c === 'new' ? r.find(x => x.mode === 'answer')?.id ?? 'new' : c)));
+    loadRuns().then(r => setChat(c => (c === 'new' ? (r.find(x => x.id === 'example-byd') ?? r.find(x => x.mode === 'answer'))?.id ?? 'new' : c)));
   }, [loadNotes, loadRuns]);
   useEffect(() => { if (toast) { const t = setTimeout(() => setToast(''), 3000); return () => clearTimeout(t); } }, [toast]);
 
@@ -248,7 +249,7 @@ export default function InsightApp() {
       <div className="chat-wrap">
         <section className="thread" aria-label="Conversation">
           <div className="u-msg">{chatRun.question}</div>
-          <Plan tasks={chatRun.tasks} state={chatRun.example ? 'example' : 'done'} />
+          <Plan tasks={chatRun.tasks} state={chatRun.example && !chatRun.tasks.length ? 'example' : 'done'} />
           <AnswerCard a={chatRun.answer} run={chatRun} />
           <Composer onAsk={q => ask(q)} />
         </section>
@@ -315,7 +316,7 @@ export default function InsightApp() {
           <header className="hd">
             <div>
               <h1>{title}</h1>
-              <div className="sub">{chat === 'new' ? 'Ask anything. Every answer is built from cited sources.' : chatRun?.example ? 'Example run on the demo graph' : 'Answered from the knowledge graph'}</div>
+              <div className="sub">{chat === 'new' ? 'Ask anything. Every answer is built from cited sources.' : chatRun?.example ? (chatRun.tasks.length ? `Recorded live run · researched ${new Date(chatRun.created_at).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}` : 'Example run on the demo graph') : 'Answered from the knowledge graph'}</div>
             </div>
             <div className="pills" role="tablist" aria-label="View">
               <button role="tab" aria-selected="true">Chat</button>

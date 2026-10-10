@@ -5,6 +5,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import { SEED_DATE, SEED_NOTES, SEED_RUNS, SEED_SOURCES } from './seed.ts';
+import DEMO_BYD from './demo-byd.json' with { type: 'json' };
 import type { Claim, ClaimStatus, Note, NoteType, Run } from './types.ts';
 
 type DB = Database.Database;
@@ -31,6 +32,7 @@ export function openDb(file: string): DB {
   db.pragma('journal_mode = WAL');
   db.exec(SCHEMA);
   if (!(db.prepare('select count(*) n from notes').get() as { n: number }).n) seed(db);
+  if (!db.prepare('select 1 from runs where id = ?').get(DEMO_BYD.run.id)) seedSnapshot(db, DEMO_BYD);
   return db;
 }
 
@@ -63,6 +65,22 @@ function seed(db: DB) {
       const run: Run = { id: r.id, question: r.question, mode: r.mode, created_at: t, example: true, tasks: [], answer: r.answer, new_note_ids: [] };
       db.prepare('insert into runs values (?,?,?)').run(r.id, t, JSON.stringify(run));
     }
+  })();
+}
+
+/** Loads a recorded live run (its notes, claims, links, sources and the run itself) on top of the seed.
+    Sources keep only short extracts around each quoted snippet, not the full page. */
+function seedSnapshot(db: DB, snap: typeof DEMO_BYD) {
+  db.transaction(() => {
+    const ins = (table: string, row: Record<string, unknown>) => {
+      const keys = Object.keys(row);
+      db.prepare(`insert or ignore into ${table} (${keys.join(',')}) values (${keys.map(() => '?').join(',')})`).run(...keys.map(k => row[k] as never));
+    };
+    for (const n of snap.notes) ins('notes', n);
+    for (const s of snap.sources) ins('sources', s);
+    for (const c of snap.claims) ins('claims', c);
+    for (const l of snap.links) ins('links', l);
+    db.prepare('insert or ignore into runs values (?,?,?)').run(snap.run.id, snap.run.created_at, JSON.stringify(snap.run));
   })();
 }
 

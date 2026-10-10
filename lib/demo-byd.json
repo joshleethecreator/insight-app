@@ -1,0 +1,872 @@
+{
+ "notes": [
+  {
+   "id": "s_f799ab36",
+   "type": "Source",
+   "title": "Carz Automedia Malaysia — BYD Sees 2025 YTD Sales Total Reach 11,097 Units – 70% YoY Up From 2024",
+   "company": "BYD",
+   "body_md": "",
+   "created_at": "2026-10-10T14:55:23.591Z",
+   "updated_at": "2026-10-10T14:55:23.591Z",
+   "last_verified_at": "2026-10-10T14:55:23.591Z"
+  },
+  {
+   "id": "p_b548f7d3",
+   "type": "Product",
+   "title": "Shark 6",
+   "company": "BYD",
+   "body_md": "BYD previewed the Shark 6 'super-PHEV' pick-up truck at the BYD Tech Discovery 2025 roadshow.",
+   "created_at": "2026-10-10T14:55:23.591Z",
+   "updated_at": "2026-10-10T14:55:23.591Z",
+   "last_verified_at": "2026-10-10T14:55:23.591Z"
+  },
+  {
+   "id": "e_67e7a67b",
+   "type": "Event",
+   "title": "BYD Tech Discovery 2025",
+   "company": "",
+   "body_md": "BYD Tech Discovery 2025 roadshow featured the preview of the Shark 6 and showcased technologies.",
+   "created_at": "2026-10-10T14:55:23.591Z",
+   "updated_at": "2026-10-10T14:56:08.157Z",
+   "last_verified_at": "2026-10-10T14:56:08.157Z"
+  },
+  {
+   "id": "c_6c7b0a7f",
+   "type": "Company",
+   "title": "Denza Malaysia",
+   "company": "Denza",
+   "body_md": "Combined BYD and Denza sales in Malaysia reached 24,328 units as of Nov 2025.",
+   "created_at": "2026-10-10T14:55:23.591Z",
+   "updated_at": "2026-10-10T14:55:23.591Z",
+   "last_verified_at": "2026-10-10T14:55:23.591Z"
+  },
+  {
+   "id": "s_c513f18c",
+   "type": "Source",
+   "title": "Research-Methodology — BYD segmentation, targeting and positioning",
+   "company": "BYD",
+   "body_md": "",
+   "created_at": "2026-10-10T14:55:40.473Z",
+   "updated_at": "2026-10-10T14:55:40.473Z",
+   "last_verified_at": "2026-10-10T14:55:40.473Z"
+  },
+  {
+   "id": "s_586f8981",
+   "type": "Source",
+   "title": "About BYD | BYD Malaysia by Sime Motors",
+   "company": "BYD",
+   "body_md": "",
+   "created_at": "2026-10-10T14:55:48.472Z",
+   "updated_at": "2026-10-10T14:55:48.472Z",
+   "last_verified_at": "2026-10-10T14:55:48.472Z"
+  },
+  {
+   "id": "p_e5a55bf1",
+   "type": "Product",
+   "title": "Dolphin",
+   "company": "BYD",
+   "body_md": "The BYD DOLPHIN was introduced in mid-2023 as BYD's second all-electric vehicle in Malaysia.",
+   "created_at": "2026-10-10T14:55:48.472Z",
+   "updated_at": "2026-10-10T14:55:48.472Z",
+   "last_verified_at": "2026-10-10T14:55:48.472Z"
+  },
+  {
+   "id": "s_8b61f160",
+   "type": "Source",
+   "title": "The 2026 BYD ATTO 3 Is Launching On 5th June 2026! | BYD Malaysia by Sime Motors",
+   "company": "BYD",
+   "body_md": "",
+   "created_at": "2026-10-10T14:55:55.582Z",
+   "updated_at": "2026-10-10T14:55:55.582Z",
+   "last_verified_at": "2026-10-10T14:55:55.582Z"
+  },
+  {
+   "id": "e_896eb978",
+   "type": "Event",
+   "title": "2026 BYD ATTO 3 Launch Event",
+   "company": "BYD",
+   "body_md": "BYD Malaysia will launch the 2026 BYD ATTO 3 on 5th June 2026 at XOX Arena, The Arch Galeries, Kuala Lumpur, with public access from 5–7 June 2026.",
+   "created_at": "2026-10-10T14:55:55.582Z",
+   "updated_at": "2026-10-10T14:56:08.157Z",
+   "last_verified_at": "2026-10-10T14:56:08.157Z"
+  },
+  {
+   "id": "s_2f639919",
+   "type": "Source",
+   "title": "BYD Malaysia by Sime Motors — Events",
+   "company": "BYD",
+   "body_md": "",
+   "created_at": "2026-10-10T14:56:08.157Z",
+   "updated_at": "2026-10-10T14:56:08.157Z",
+   "last_verified_at": "2026-10-10T14:56:08.157Z"
+  },
+  {
+   "id": "e_15ec81c4",
+   "type": "Event",
+   "title": "Discover The 2026 BYD SEALION 7 At 1 Utama",
+   "company": "BYD",
+   "body_md": "BYD Malaysia event to discover the 2026 BYD SEALION 7 at 1 Utama.",
+   "created_at": "2026-10-10T14:56:08.157Z",
+   "updated_at": "2026-10-10T14:56:08.157Z",
+   "last_verified_at": "2026-10-10T14:56:08.157Z"
+  },
+  {
+   "id": "e_961a1549",
+   "type": "Event",
+   "title": "BYD SEAL 6 EV Launch Event",
+   "company": "BYD",
+   "body_md": "Launch event for the all-new BYD SEAL 6 EV on 26th September.",
+   "created_at": "2026-10-10T14:56:08.157Z",
+   "updated_at": "2026-10-10T14:56:08.157Z",
+   "last_verified_at": "2026-10-10T14:56:08.157Z"
+  },
+  {
+   "id": "e_699b380e",
+   "type": "Event",
+   "title": "BYD ATTO 2 Launch Event",
+   "company": "BYD",
+   "body_md": "Event for BYD ATTO 2 with the tagline 'When Chill Meets Thrill'.",
+   "created_at": "2026-10-10T14:56:08.157Z",
+   "updated_at": "2026-10-10T14:56:08.157Z",
+   "last_verified_at": "2026-10-10T14:56:08.157Z"
+  },
+  {
+   "id": "e_ea3aa2df",
+   "type": "Event",
+   "title": "Malaysia Autoshow 2025",
+   "company": "BYD",
+   "body_md": "BYD at Malaysia Autoshow 2025 with exclusive promo: free RM800 charging credit.",
+   "created_at": "2026-10-10T14:56:08.157Z",
+   "updated_at": "2026-10-10T14:56:08.157Z",
+   "last_verified_at": "2026-10-10T14:56:08.157Z"
+  },
+  {
+   "id": "e_bb44cbb7",
+   "type": "Event",
+   "title": "Sime Motors AutoArena 2025",
+   "company": "BYD",
+   "body_md": "Sime Motors AutoArena event at National Stadium Bukit Jalil on 10th-12th January.",
+   "created_at": "2026-10-10T14:56:08.157Z",
+   "updated_at": "2026-10-10T14:56:08.157Z",
+   "last_verified_at": "2026-10-10T14:56:08.157Z"
+  },
+  {
+   "id": "e_8ca62c8b",
+   "type": "Event",
+   "title": "BYD SEALION 7 Launch Event",
+   "company": "BYD",
+   "body_md": "Launch event for the most anticipated BYD SEALION 7 on 14th November.",
+   "created_at": "2026-10-10T14:56:08.157Z",
+   "updated_at": "2026-10-10T14:56:08.157Z",
+   "last_verified_at": "2026-10-10T14:56:08.157Z"
+  },
+  {
+   "id": "e_a5cd96d0",
+   "type": "Event",
+   "title": "BYD Electric MPV Launch Event",
+   "company": "BYD",
+   "body_md": "Launch event for the all-new BYD Electric MPV on 15th October 2024.",
+   "created_at": "2026-10-10T14:56:08.157Z",
+   "updated_at": "2026-10-10T14:56:08.157Z",
+   "last_verified_at": "2026-10-10T14:56:08.157Z"
+  },
+  {
+   "id": "e_2f1a979e",
+   "type": "Event",
+   "title": "BYD SEAL Dynamic Launch At Bukit Jalil",
+   "company": "BYD",
+   "body_md": "Dynamic launch event for BYD SEAL at Bukit Jalil.",
+   "created_at": "2026-10-10T14:56:08.157Z",
+   "updated_at": "2026-10-10T14:56:08.157Z",
+   "last_verified_at": "2026-10-10T14:56:08.157Z"
+  },
+  {
+   "id": "e_c9c64493",
+   "type": "Event",
+   "title": "BYD Challenge Day 2024",
+   "company": "BYD",
+   "body_md": "BYD Challenge Day – the largest BYD EV event of the year.",
+   "created_at": "2026-10-10T14:56:08.157Z",
+   "updated_at": "2026-10-10T14:56:08.157Z",
+   "last_verified_at": "2026-10-10T14:56:08.157Z"
+  },
+  {
+   "id": "e_73e157cb",
+   "type": "Event",
+   "title": "Malaysia Autoshow 2024",
+   "company": "BYD",
+   "body_md": "BYD at Malaysia Autoshow 2024 from May 22-26 at Hall A2, MAEPS Serdang.",
+   "created_at": "2026-10-10T14:56:08.157Z",
+   "updated_at": "2026-10-10T14:56:08.157Z",
+   "last_verified_at": "2026-10-10T14:56:08.157Z"
+  }
+ ],
+ "claims": [
+  {
+   "id": "c_97363800",
+   "note_id": "c_byd",
+   "text": "BYD brand year-to-date sales reached 11,097 units as of Nov 2025.",
+   "source_id": "s_f799ab36",
+   "evidence_snippet": "the firm revealed that its total year-to-date (YTD) sales for 2025 as of Nov have reached 11,097 units.",
+   "status": "verified"
+  },
+  {
+   "id": "c_556b905d",
+   "note_id": "c_byd",
+   "text": "BYD sales increased 70% year-on-year versus 2024.",
+   "source_id": "s_f799ab36",
+   "evidence_snippet": "This marks a 70% year-on-year (YoY) increase versus the same period last year (2024)",
+   "status": "verified"
+  },
+  {
+   "id": "c_547fce22",
+   "note_id": "p_b548f7d3",
+   "text": "Shark 6 'super-PHEV' pick-up truck previewed.",
+   "source_id": "s_f799ab36",
+   "evidence_snippet": "Amongst the highlights of the BYD Tech Discovery 2025 roadshow this week was the preview of the Shark 6 'super-PHEV' pick-up truck.",
+   "status": "verified"
+  },
+  {
+   "id": "c_462ffe5c",
+   "note_id": "e_67e7a67b",
+   "text": "BYD Tech Discovery 2025 roadshow was held this week.",
+   "source_id": "s_f799ab36",
+   "evidence_snippet": "BYD Tech Discovery 2025 roadshow this week",
+   "status": "verified"
+  },
+  {
+   "id": "c_7bd9628d",
+   "note_id": "e_67e7a67b",
+   "text": "Shark 6 previewed at the roadshow.",
+   "source_id": "s_f799ab36",
+   "evidence_snippet": "the preview of the Shark 6 'super-PHEV' pick-up truck",
+   "status": "verified"
+  },
+  {
+   "id": "c_0172361f",
+   "note_id": "c_6c7b0a7f",
+   "text": "Combined BYD and Denza sales reached 24,328 units as of Nov 2025.",
+   "source_id": "s_f799ab36",
+   "evidence_snippet": "combined sales of both the BYD and its Denza brands in Malaysia have also reached 24,328 units to date",
+   "status": "verified"
+  },
+  {
+   "id": "c_37f421bd",
+   "note_id": "c_byd",
+   "text": "BYD prioritizes urban areas with higher EV adoption rates and developed charging infrastructure.",
+   "source_id": "s_c513f18c",
+   "evidence_snippet": "BYD prioritizes urban areas with higher EV adoption rates and developed charging infrastructure.",
+   "status": "stale"
+  },
+  {
+   "id": "c_2a7193f1",
+   "note_id": "c_byd",
+   "text": "Millennials and Gen Z are significant targets due to their environmental consciousness and tech-savviness.",
+   "source_id": "s_c513f18c",
+   "evidence_snippet": "Millennials and Gen Z are significant targets due to their environmental consciousness and tech-savviness.",
+   "status": "stale"
+  },
+  {
+   "id": "c_34e7c845",
+   "note_id": "c_byd",
+   "text": "BYD uses multi-segment market positioning.",
+   "source_id": "s_c513f18c",
+   "evidence_snippet": "the electric automaker uses multi-segment market positioning",
+   "status": "stale"
+  },
+  {
+   "id": "c_f1146fb5",
+   "note_id": "c_byd",
+   "text": "BYD Malaysia was established through a strategic partnership between BYD Auto Industry Co Ltd and Sime Motors in December 2022.",
+   "source_id": "s_586f8981",
+   "evidence_snippet": "BYD in Malaysia was established through a strategic partnership between China-based BYD Auto Industry Co Ltd (BYD) and Sime Motors in December 2022.",
+   "status": "verified"
+  },
+  {
+   "id": "c_ea885d7b",
+   "note_id": "c_byd",
+   "text": "Beyond Auto is a subsidiary of Sime Motors and the official exclusive distributor of BYD vehicles in Malaysia.",
+   "source_id": "s_586f8981",
+   "evidence_snippet": "Beyond Auto, a subsidiary of Sime Motors, is the official exclusive distributor of BYD vehicles in Malaysia",
+   "status": "verified"
+  },
+  {
+   "id": "c_e7b040a7",
+   "note_id": "p_e5a55bf1",
+   "text": "BYD introduced the BYD DOLPHIN in mid-2023 as its second all-electric vehicle in Malaysia.",
+   "source_id": "s_586f8981",
+   "evidence_snippet": "BYD introduced the BYD DOLPHIN in mid-2023, marking the company’s second foray into the nation's passenger car market with an all-electric vehicle.",
+   "status": "verified"
+  },
+  {
+   "id": "c_5c430818",
+   "note_id": "p_atto",
+   "text": "BYD delivered 1,000 units of the BYD ATTO 3 within the first 100 days of the Malaysian launch.",
+   "source_id": "s_586f8981",
+   "evidence_snippet": "BYD achieved another milestone by delivering 1,000 units of the BYD ATTO 3 within the first 100 days of the Malaysian launch.",
+   "status": "verified"
+  },
+  {
+   "id": "c_2c7df0b3",
+   "note_id": "e_896eb978",
+   "text": "The 2026 BYD ATTO 3 launches on 5th June 2026 at XOX Arena, The Arch Galeries, Kuala Lumpur.",
+   "source_id": "s_8b61f160",
+   "evidence_snippet": "Location: XOX Arena, The Arch Galeries, Kuala Lumpur",
+   "status": "verified"
+  },
+  {
+   "id": "c_82d4f416",
+   "note_id": "e_896eb978",
+   "text": "The event is open to the public from 5–7 June 2026, 10:00 AM – 12:00 AM.",
+   "source_id": "s_8b61f160",
+   "evidence_snippet": "Open to Public: 5 – 7 June 2026",
+   "status": "verified"
+  },
+  {
+   "id": "c_8087d2e9",
+   "note_id": "e_15ec81c4",
+   "text": "Event to discover the 2026 BYD SEALION 7 at 1 Utama.",
+   "source_id": "s_2f639919",
+   "evidence_snippet": "Discover The 2026 BYD SEALION 7 At 1 Utama!",
+   "status": "verified"
+  },
+  {
+   "id": "c_3597dc37",
+   "note_id": "e_896eb978",
+   "text": "The 2026 BYD ATTO 3 is launching on 5th June 2026.",
+   "source_id": "s_2f639919",
+   "evidence_snippet": "The 2026 BYD ATTO 3 Is Launching On 5th June 2026!",
+   "status": "verified"
+  },
+  {
+   "id": "c_f0c99a8d",
+   "note_id": "e_67e7a67b",
+   "text": "Discover Intelligent Mobility at BYD Tech Discovery 2025.",
+   "source_id": "s_2f639919",
+   "evidence_snippet": "Discover Intelligent Mobility at BYD Tech Discovery 2025!",
+   "status": "verified"
+  },
+  {
+   "id": "c_0c428e3d",
+   "note_id": "e_961a1549",
+   "text": "The all-new BYD SEAL 6 EV is launching on 26th September.",
+   "source_id": "s_2f639919",
+   "evidence_snippet": "The All-New BYD SEAL 6 EV Is Launching On 26th September!",
+   "status": "verified"
+  },
+  {
+   "id": "c_0fcfcf8d",
+   "note_id": "e_699b380e",
+   "text": "BYD ATTO 2 – When Chill Meets Thrill.",
+   "source_id": "s_2f639919",
+   "evidence_snippet": "BYD ATTO 2 – When Chill Meets Thrill",
+   "status": "verified"
+  },
+  {
+   "id": "c_d1d16f30",
+   "note_id": "e_ea3aa2df",
+   "text": "Excitement is in the Air at the Malaysia Autoshow 2025! Exclusive Promo: FREE RM800 Charging Credit",
+   "source_id": "s_2f639919",
+   "evidence_snippet": "Excitement is in the Air at the Malaysia Autoshow 2025! Exclusive Promo: FREE RM800 Charging Credit",
+   "status": "verified"
+  },
+  {
+   "id": "c_7d9a3699",
+   "note_id": "e_bb44cbb7",
+   "text": "Sime Motors AutoArena: An Epic Automotive Event Inside The National Stadium Bukit Jalil on 10th - 12th January.",
+   "source_id": "s_2f639919",
+   "evidence_snippet": "Sime Motors AutoArena: An Epic Automotive Event Inside The National Stadium Bukit Jalil on 10th - 12th January.",
+   "status": "verified"
+  },
+  {
+   "id": "c_748cc625",
+   "note_id": "e_8ca62c8b",
+   "text": "The Most Anticipated BYD SEALION 7 Is Launching on 14th November.",
+   "source_id": "s_2f639919",
+   "evidence_snippet": "The Most Anticipated BYD SEALION 7 Is Launching on 14th November!",
+   "status": "verified"
+  },
+  {
+   "id": "c_2221b384",
+   "note_id": "e_a5cd96d0",
+   "text": "Get Ready: The All-New BYD Electric MPV Launches on 15th October 2024",
+   "source_id": "s_2f639919",
+   "evidence_snippet": "Get Ready: The All-New BYD Electric MPV Launches on 15th October 2024",
+   "status": "verified"
+  },
+  {
+   "id": "c_6db8b2c5",
+   "note_id": "e_2f1a979e",
+   "text": "BYD SEAL Dynamic Launch At Bukit Jalil",
+   "source_id": "s_2f639919",
+   "evidence_snippet": "BYD SEAL Dynamic Launch At Bukit Jalil",
+   "status": "verified"
+  },
+  {
+   "id": "c_8bbdf30d",
+   "note_id": "e_c9c64493",
+   "text": "Join Us for BYD Challenge Day – The Largest BYD EV Event of the Year!",
+   "source_id": "s_2f639919",
+   "evidence_snippet": "Join Us for BYD Challenge Day – The Largest BYD EV Event of the Year!",
+   "status": "verified"
+  },
+  {
+   "id": "c_02b64c20",
+   "note_id": "e_73e157cb",
+   "text": "Join BYD at Malaysia Autoshow 2024 from May 22-26, 10am-10pm, at Hall A2, MAEPS Serdang.",
+   "source_id": "s_2f639919",
+   "evidence_snippet": "Silent Force, Unstoppable Performance: Join BYD at Malaysia Autoshow 2024 from May 22-26, 10am-10pm, at Hall A2, MAEPS Serdang.",
+   "status": "verified"
+  }
+ ],
+ "links": [
+  {
+   "from_id": "p_b548f7d3",
+   "to_id": "c_byd",
+   "relation": "made_by"
+  },
+  {
+   "from_id": "c_byd",
+   "to_id": "p_b548f7d3",
+   "relation": "makes"
+  },
+  {
+   "from_id": "p_b548f7d3",
+   "to_id": "e_67e7a67b",
+   "relation": "promotes"
+  },
+  {
+   "from_id": "e_67e7a67b",
+   "to_id": "p_b548f7d3",
+   "relation": "promoted_by"
+  },
+  {
+   "from_id": "e_67e7a67b",
+   "to_id": "p_b548f7d3",
+   "relation": "involves"
+  },
+  {
+   "from_id": "p_b548f7d3",
+   "to_id": "e_67e7a67b",
+   "relation": "attends"
+  },
+  {
+   "from_id": "c_byd",
+   "to_id": "p_e5a55bf1",
+   "relation": "makes"
+  },
+  {
+   "from_id": "p_e5a55bf1",
+   "to_id": "c_byd",
+   "relation": "made_by"
+  },
+  {
+   "from_id": "e_896eb978",
+   "to_id": "p_atto",
+   "relation": "promotes"
+  },
+  {
+   "from_id": "p_atto",
+   "to_id": "e_896eb978",
+   "relation": "promoted_by"
+  },
+  {
+   "from_id": "e_896eb978",
+   "to_id": "p_sl7",
+   "relation": "involves"
+  },
+  {
+   "from_id": "p_sl7",
+   "to_id": "e_896eb978",
+   "relation": "attends"
+  },
+  {
+   "from_id": "e_15ec81c4",
+   "to_id": "p_sl7",
+   "relation": "involves"
+  },
+  {
+   "from_id": "p_sl7",
+   "to_id": "e_15ec81c4",
+   "relation": "attends"
+  },
+  {
+   "from_id": "e_896eb978",
+   "to_id": "p_atto",
+   "relation": "involves"
+  },
+  {
+   "from_id": "p_atto",
+   "to_id": "e_896eb978",
+   "relation": "attends"
+  },
+  {
+   "from_id": "e_ea3aa2df",
+   "to_id": "e_mas27",
+   "relation": "involves"
+  },
+  {
+   "from_id": "e_mas27",
+   "to_id": "e_ea3aa2df",
+   "relation": "attends"
+  },
+  {
+   "from_id": "e_8ca62c8b",
+   "to_id": "p_sl7",
+   "relation": "involves"
+  },
+  {
+   "from_id": "p_sl7",
+   "to_id": "e_8ca62c8b",
+   "relation": "attends"
+  }
+ ],
+ "sources": [
+  {
+   "id": "s_f799ab36",
+   "url": "https://www.carz.com.my/2025/11/byd-sees-2025-ytd-sales-total-reach-11097-units-70-yoy-up-from-2024",
+   "source_type": "news",
+   "published_date": "2025-11-14",
+   "fetched_at": "2026-10-10T14:55:23.591Z",
+   "cached_text": "via its BYD Tech Discovery 2025 roadshow this week, BYD Cars Malaysia also conducted a quick business briefing to local press in attendance yesterday. Firstly, the firm revealed that its total year-to-date (YTD) sales for 2025 as of Nov have reached 11,097 units. This marks a 70% year-on-year (YoY) increase versus the same period last year (2024), noted BYD Cars Malaysia MD Eagle Zhao during said briefing. The BYD brand\n…\niefing to local press in attendance yesterday. Firstly, the firm revealed that its total year-to-date (YTD) sales for 2025 as of Nov have reached 11,097 units. This marks a 70% year-on-year (YoY) increase versus the same period last year (2024), noted BYD Cars Malaysia MD Eagle Zhao during said briefing. The BYD brand alone saw a 70% YoY increased total sales of 11,097 units as of Nov this year. Combi\n…\n4 Link Copied check_circle Auto News BYD Sees 2025 YTD Sales Total Reach 11,097 Units – 70% YoY Up From 2024 Thoriq Azmi 14 November 2025 at 06:00 PM Share via Amongst the highlights of the BYD Tech Discovery 2025 roadshow this week was the preview of the Shark 6 'super-PHEV' pick-up truck. Apart from previewing the Shark 6 and showcasing a slew of technologies via its BYD Tech Discovery 2025 roadshow this week, BYD Cars Malaysia also conducted a \n…\no News BYD Sees 2025 YTD Sales Total Reach 11,097 Units – 70% YoY Up From 2024 Thoriq Azmi 14 November 2025 at 06:00 PM Share via Amongst the highlights of the BYD Tech Discovery 2025 roadshow this week was the preview of the Shark 6 'super-PHEV' pick-up truck. Apart from previewing the Shark 6 and showcasing a slew of technologies via its BYD Tech Discovery 2\n…\n97 Units – 70% YoY Up From 2024 Thoriq Azmi 14 November 2025 at 06:00 PM Share via Amongst the highlights of the BYD Tech Discovery 2025 roadshow this week was the preview of the Shark 6 'super-PHEV' pick-up truck. Apart from previewing the Shark 6 and showcasing a slew of technologies via its BYD Tech Discovery 2025 roadshow this week, BYD Cars Malaysia also conducted a\n…\nased total sales of 11,097 units as of Nov this year. Combined with Denza, a total 24,328 units have been shifted as of Nov 2025. Zhao continued in noting that combined sales of both the BYD and its Denza brands in Malaysia have also reached 24,328 units to date since their respective debuts. As a refresher, BYD launched first back in Dec 2022, whilst Denza arrived in Feb this year. Zhao further stressed that the combi"
+  },
+  {
+   "id": "s_c513f18c",
+   "url": "https://research-methodology.net/category/segment-target-position/",
+   "source_type": "news",
+   "published_date": "2024-02-18",
+   "fetched_at": "2026-10-10T14:55:40.473Z",
+   "cached_text": "e components work together to develop a clear marketing strategy. BYD focuses on the following segmentation bases: 1. Geographic Segmentation. Urban vs. Rural. BYD prioritizes urban areas with higher EV adoption rates and developed charging infrastructure. They offer smaller, affordable EVs for city commutes. Developed vs. Developing Countries. In developed countries, BYD competes with premium brands, focusing on\n…\n. BYD targets regions with government incentives for EVs and tailors offerings based on local preferences and driving habits. 2. Demographic Segmentation. Age. Millennials and Gen Z are significant targets due to their environmental consciousness and tech-savviness. BYD offers sleek designs and connected features for these segments. Income Level. BYD offers a range of price points across categories, targeting both budget-c\n…\nrands, focusing on advanced features and technology. In developing markets, they offer budget-friendly models with longer range for rural driving. Accordingly, the electric automaker uses multi-segment market positioning. Specific Regions. BYD targets regions with government incentives for EVs and tailors offerings based on local preferences and driving habits. 2. Demographic S"
+  },
+  {
+   "id": "s_586f8981",
+   "url": "https://byd.simemotors.my/about-byd",
+   "source_type": "official_site",
+   "published_date": "",
+   "fetched_at": "2026-10-10T14:55:48.472Z",
+   "cached_text": "systems to ensure an outstanding experience for BYD owners. For more information, visit “BYD Cars Malaysia” Facebook and Instagram pages. About BYD in Malaysia BYD in Malaysia was established through a strategic partnership between China-based BYD Auto Industry Co Ltd (BYD) and Sime Motors in December 2022. The collaboration signified a bold step towards revolutionising the EV experience in Malaysia. BYD’s entry into Malaysia marked the first BYD EV, with the unve\n…\n Sime Motors The store will not work correctly in the case when cookies are disabled. Active CMS Builder Enquire Now Home About BYD About BYD About Beyond Auto Beyond Auto, a subsidiary of Sime Motors, is the official exclusive distributor of BYD vehicles in Malaysia, introducing the first of many BYD electric vehicle (EV) for the passenger market in the nation. With its customer-centric approach, SDBA offers comprehensive \n…\ne pace, BYD achieved another milestone by delivering 1,000 units of the BYD ATTO 3 within the first 100 days of the Malaysian launch. Building on this success, BYD introduced the BYD DOLPHIN in mid-2023, marking the company’s second foray into the nation's passenger car market with an all-electric vehicle. Committed to providing a comprehensive and top-tier ownership experience, BYD ensures that every aspect of aftersales care aligns with international standards.\n…\nO 3 to the Malaysian market, this elicited an overwhelming response that translated into over 1,000 orders within the first 10 days. Setting a remarkable pace, BYD achieved another milestone by delivering 1,000 units of the BYD ATTO 3 within the first 100 days of the Malaysian launch. Building on this success, BYD introduced the BYD DOLPHIN in mid-2023, marking the company’s second foray into the nation's passenger car market with an all-ele"
+  },
+  {
+   "id": "s_8b61f160",
+   "url": "https://byd.simemotors.my/blog/the-2026-byd-atto-3-is-launching-on-5th-june-2026.html",
+   "source_type": "official_site",
+   "published_date": "2026-06-01",
+   "fetched_at": "2026-10-10T14:55:55.582Z",
+   "cached_text": "26 BYD ATTO 3 Is Launching On 5th June 2026! June 1, 2026 The 2026 BYD ATTO 3 Is Launching On 5th June 2026! The 2026 BYD ATTO 3 Is Launching On 5th June 2026! Location: XOX Arena, The Arch Galeries, Kuala Lumpur Open to Public: 5 – 7 June 2026 Time: 10:00 AM – 12:00 AM A Smarter Drive Begins The future of intelligent electric mobility is here. Be among the first in Mal\n…\n2026 The 2026 BYD ATTO 3 Is Launching On 5th June 2026! The 2026 BYD ATTO 3 Is Launching On 5th June 2026! Location: XOX Arena, The Arch Galeries, Kuala Lumpur Open to Public: 5 – 7 June 2026 Time: 10:00 AM – 12:00 AM A Smarter Drive Begins The future of intelligent electric mobility is here. Be among the first in Malaysia to experience the launch o"
+  },
+  {
+   "id": "s_2f639919",
+   "url": "https://byd.simemotors.my/blog/category/events.html",
+   "source_type": "official_site",
+   "published_date": "",
+   "fetched_at": "2026-10-10T14:56:08.157Z",
+   "cached_text": "ia by Sime Motors The store will not work correctly in the case when cookies are disabled. Active CMS Builder Enquire Now Home Blog Events Events July 29, 2026 Discover The 2026 BYD SEALION 7 At 1 Utama! Posted in: Events Read More June 1, 2026 The 2026 BYD ATTO 3 Is Launching On 5th June 2026! Posted in: Events Read More November 5, 2025 Discover Intelligent M\n…\nbled. Active CMS Builder Enquire Now Home Blog Events Events July 29, 2026 Discover The 2026 BYD SEALION 7 At 1 Utama! Posted in: Events Read More June 1, 2026 The 2026 BYD ATTO 3 Is Launching On 5th June 2026! Posted in: Events Read More November 5, 2025 Discover Intelligent Mobility at BYD Tech Discovery 2025! Posted in: Events Read More September 17, 2025 The All-N\n…\n SEALION 7 At 1 Utama! Posted in: Events Read More June 1, 2026 The 2026 BYD ATTO 3 Is Launching On 5th June 2026! Posted in: Events Read More November 5, 2025 Discover Intelligent Mobility at BYD Tech Discovery 2025! Posted in: Events Read More September 17, 2025 The All-New BYD SEAL 6 EV Is Launching On 26th September! Posted in: Events Read More July 14, 2025 BYD ATTO 2 –\n…\nune 2026! Posted in: Events Read More November 5, 2025 Discover Intelligent Mobility at BYD Tech Discovery 2025! Posted in: Events Read More September 17, 2025 The All-New BYD SEAL 6 EV Is Launching On 26th September! Posted in: Events Read More July 14, 2025 BYD ATTO 2 – When Chill Meets Thrill Posted in: Events Read More May 5, 2025 Excitement is in the Air at the Malaysia\n…\ncovery 2025! Posted in: Events Read More September 17, 2025 The All-New BYD SEAL 6 EV Is Launching On 26th September! Posted in: Events Read More July 14, 2025 BYD ATTO 2 – When Chill Meets Thrill Posted in: Events Read More May 5, 2025 Excitement is in the Air at the Malaysia Autoshow 2025! Exclusive Promo: FREE RM800 Charging Credit Posted in: Events R\n…\nEAL 6 EV Is Launching On 26th September! Posted in: Events Read More July 14, 2025 BYD ATTO 2 – When Chill Meets Thrill Posted in: Events Read More May 5, 2025 Excitement is in the Air at the Malaysia Autoshow 2025! Exclusive Promo: FREE RM800 Charging Credit Posted in: Events Read More January 6, 2025 Sime Motors AutoArena: An Epic Automotive Event Inside The National Stadium Bukit Jalil on 10th - 12th January. Pos\n…\nore May 5, 2025 Excitement is in the Air at the Malaysia Autoshow 2025! Exclusive Promo: FREE RM800 Charging Credit Posted in: Events Read More January 6, 2025 Sime Motors AutoArena: An Epic Automotive Event Inside The National Stadium Bukit Jalil on 10th - 12th January. Posted in: Events Read More November 8, 2024 The Most Anticipated BYD SEALION 7 Is Launching on 14th November! Posted in: Events Read More October 8, 2024 Get \n…\n25 Sime Motors AutoArena: An Epic Automotive Event Inside The National Stadium Bukit Jalil on 10th - 12th January. Posted in: Events Read More November 8, 2024 The Most Anticipated BYD SEALION 7 Is Launching on 14th November! Posted in: Events Read More October 8, 2024 Get Ready: The All-New BYD Electric MPV Launches on 15th October 2024 Posted in: Events Read More September 2, 2024\n…\nary. Posted in: Events Read More November 8, 2024 The Most Anticipated BYD SEALION 7 Is Launching on 14th November! Posted in: Events Read More October 8, 2024 Get Ready: The All-New BYD Electric MPV Launches on 15th October 2024 Posted in: Events Read More September 2, 2024 BYD SEAL Dynamic Launch At Bukit Jalil Posted in: Events Read More June 5, 2024 Join Us for BYD Challenge Day – T\n…\nPosted in: Events Read More October 8, 2024 Get Ready: The All-New BYD Electric MPV Launches on 15th October 2024 Posted in: Events Read More September 2, 2024 BYD SEAL Dynamic Launch At Bukit Jalil Posted in: Events Read More June 5, 2024 Join Us for BYD Challenge Day – The Largest BYD EV Event of the Year! Posted in: Events Read More May 21, 2024 Silent \n…\nMPV Launches on 15th October 2024 Posted in: Events Read More September 2, 2024 BYD SEAL Dynamic Launch At Bukit Jalil Posted in: Events Read More June 5, 2024 Join Us for BYD Challenge Day – The Largest BYD EV Event of the Year! Posted in: Events Read More May 21, 2024 Silent Force, Unstoppable Performance: Join BYD at Malaysia Autoshow 2024 from May 22-26, 10am-10pm, at Hall A2, MAEPS\n…\nt Jalil Posted in: Events Read More June 5, 2024 Join Us for BYD Challenge Day – The Largest BYD EV Event of the Year! Posted in: Events Read More May 21, 2024 Silent Force, Unstoppable Performance: Join BYD at Malaysia Autoshow 2024 from May 22-26, 10am-10pm, at Hall A2, MAEPS Serdang. Posted in: Events Read More 1 of 2 Login and Registration Form Login Register Customer Login Registered Customers Forgot Your Password?"
+  }
+ ],
+ "run": {
+  "id": "example-byd",
+  "question": "What is BYD marketing campaign strategy in Malaysia right now? Show the recent BYD campaigns, how many people they attracted, and which customers they are targeting.",
+  "mode": "answer",
+  "created_at": "2026-10-10T14:55:08.239Z",
+  "tasks": [
+   {
+    "title": "BYD Malaysia recent marketing campaigns",
+    "query": "BYD Malaysia marketing campaign 2025 2026",
+    "company": "BYD",
+    "note_type": "Campaign",
+    "id": "t1",
+    "status": "done",
+    "detail": "1 note already in the graph"
+   },
+   {
+    "title": "BYD Malaysia campaign audience and reach",
+    "query": "BYD Malaysia campaign attendance participants reach 2025",
+    "company": "BYD",
+    "note_type": "Campaign",
+    "id": "t2",
+    "status": "done",
+    "detail": "5 notes added or updated"
+   },
+   {
+    "title": "BYD Malaysia target customer segments",
+    "query": "BYD Malaysia target market customer segments demographics",
+    "company": "BYD",
+    "note_type": "Company",
+    "id": "t3",
+    "status": "done",
+    "detail": "6 notes added or updated"
+   },
+   {
+    "title": "BYD Malaysia promotional events",
+    "query": "BYD Malaysia event launch test drive 2025 2026",
+    "company": "BYD",
+    "note_type": "Event",
+    "id": "t4",
+    "status": "done",
+    "detail": "15 notes added or updated"
+   },
+   {
+    "title": "BYD Malaysia model promotion focus",
+    "query": "BYD Atto 3 Seal Dolphin Malaysia promotion launch campaign",
+    "company": "BYD",
+    "note_type": "Product",
+    "id": "t5",
+    "status": "failed",
+    "detail": "Skipped: research limit for one run"
+   }
+  ],
+  "answer": {
+   "title": "BYD Marketing Campaign Strategy in Malaysia",
+   "lead": {
+    "text": "BYD's current marketing strategy in Malaysia centers on launch events, roadshows, and rebate campaigns.",
+    "cites": [
+     "c_byd.1",
+     "c_8087d2e9",
+     "c_2c7df0b3",
+     "c_462ffe5c",
+     "c_748cc625",
+     "c_2221b384",
+     "c_0c428e3d",
+     "c_0fcfcf8d",
+     "c_7d9a3699",
+     "c_6db8b2c5",
+     "c_8bbdf30d",
+     "c_02b64c20",
+     "c_d1d16f30"
+    ],
+    "inference": true
+   },
+   "sections": [
+    {
+     "heading": "Recent Campaigns and Events",
+     "sentences": [
+      {
+       "text": "BYD ran the Merdeka Dreams Deal rebate campaign in August 2026.",
+       "cites": [
+        "c_byd.1"
+       ]
+      },
+      {
+       "text": "The Merdeka campaign offered up to RM14,000 off the Atto 3 and up to RM7,000 off the Sealion 7.",
+       "cites": [
+        "cm_byd.1"
+       ]
+      },
+      {
+       "text": "The 2026 BYD SEALION 7 launch event occurred on 14th November.",
+       "cites": [
+        "c_748cc625"
+       ]
+      },
+      {
+       "text": "The 2026 BYD ATTO 3 launch event took place from 5–7 June 2026 at XOX Arena, The Arch Galeries, Kuala Lumpur.",
+       "cites": [
+        "c_2c7df0b3",
+        "c_82d4f416"
+       ]
+      },
+      {
+       "text": "BYD Tech Discovery 2025 roadshow was held recently.",
+       "cites": [
+        "c_462ffe5c"
+       ]
+      },
+      {
+       "text": "A Shark 6 preview occurred at the roadshow.",
+       "cites": [
+        "c_7bd9628d"
+       ]
+      },
+      {
+       "text": "BYD Malaysia offered a free RM800 charging credit at the Malaysia Autoshow 2025.",
+       "cites": [
+        "c_d1d16f30"
+       ]
+      },
+      {
+       "text": "These are recent events.",
+       "cites": [
+        "c_byd.1",
+        "c_8087d2e9",
+        "c_2c7df0b3",
+        "c_462ffe5c",
+        "c_748cc625",
+        "c_2221b384",
+        "c_0c428e3d",
+        "c_0fcfcf8d",
+        "c_7d9a3699",
+        "c_6db8b2c5",
+        "c_8bbdf30d",
+        "c_02b64c20",
+        "c_d1d16f30"
+       ],
+       "inference": true
+      }
+     ]
+    },
+    {
+     "heading": "Customer Targeting",
+     "sentences": [
+      {
+       "text": "BYD prioritizes urban areas with higher EV adoption rates and developed charging infrastructure.",
+       "cites": [
+        "c_37f421bd"
+       ],
+       "inference": false
+      },
+      {
+       "text": "Millennials and Gen Z are significant targets due to their environmental consciousness and tech-savviness.",
+       "cites": [
+        "c_2a7193f1"
+       ],
+       "inference": false
+      },
+      {
+       "text": "BYD uses multi-segment market positioning.",
+       "cites": [
+        "c_34e7c845"
+       ],
+       "inference": false
+      },
+      {
+       "text": "These targeting claims are from 2024 and may be stale.",
+       "cites": [
+        "c_37f421bd",
+        "c_2a7193f1",
+        "c_34e7c845"
+       ],
+       "inference": true
+      }
+     ]
+    },
+    {
+     "heading": "Sales Figures",
+     "sentences": [
+      {
+       "text": "BYD brand year-to-date sales reached 11,097 units as of Nov 2025.",
+       "cites": [
+        "c_97363800"
+       ],
+       "inference": false
+      },
+      {
+       "text": "BYD sales increased 70% year-on-year versus 2024.",
+       "cites": [
+        "c_556b905d"
+       ],
+       "inference": false
+      },
+      {
+       "text": "Combined BYD and Denza sales reached 24,328 units as of Nov 2025.",
+       "cites": [
+        "c_0172361f"
+       ],
+       "inference": false
+      },
+      {
+       "text": "BYD delivered 1,000 units of the BYD ATTO 3 within the first 100 days of the Malaysian launch.",
+       "cites": [
+        "c_5c430818"
+       ],
+       "inference": false
+      }
+     ]
+    }
+   ],
+   "not_found": [
+    "Number of people attracted to specific recent BYD campaigns or events.",
+    "Information on whether the Merdeka Dreams Deal campaign has ended or its specific end date.",
+    "Details on the target customer segments for the recent campaigns (e.g., who the Merdeka deal or launch events are aimed at) beyond the stale 2024 segmentation."
+   ]
+  },
+  "new_note_ids": [
+   "s_f799ab36",
+   "p_b548f7d3",
+   "e_67e7a67b",
+   "c_6c7b0a7f",
+   "c_byd",
+   "s_c513f18c",
+   "s_586f8981",
+   "p_e5a55bf1",
+   "p_atto",
+   "s_8b61f160",
+   "e_896eb978",
+   "s_2f639919",
+   "e_15ec81c4",
+   "e_961a1549",
+   "e_699b380e",
+   "e_ea3aa2df",
+   "e_bb44cbb7",
+   "e_8ca62c8b",
+   "e_a5cd96d0",
+   "e_2f1a979e",
+   "e_c9c64493",
+   "e_73e157cb",
+   "e_896eb978"
+  ],
+  "web": [
+   {
+    "url": "https://www.carz.com.my/2025/11/byd-sees-2025-ytd-sales-total-reach-11097-units-70-yoy-up-from-2024",
+    "title": "Carz Automedia Malaysia — BYD Sees 2025 YTD Sales Total Reach 11,097 Units – 70% YoY Up From 2024",
+    "task": "BYD Malaysia campaign audience and reach",
+    "status": "saved",
+    "detail": "6 verified claims saved",
+    "source_id": "s_f799ab36"
+   },
+   {
+    "url": "https://byd.simemotors.my/blog/excitement-is-in-the-air-at-the-malaysia-autoshow-2025.html",
+    "title": "Excitement is in the Air at the Malaysia Autoshow 2025! - BYD",
+    "task": "BYD Malaysia campaign audience and reach",
+    "status": "no_claims",
+    "detail": "Read, but no claim passed validation"
+   },
+   {
+    "url": "https://francis-press.com/uploads/papers/5SZl8okDxzPcEHRahZdAuFfbgrDFDxdAUqgVVVBM.pdf",
+    "title": "BYD Digital Marketing Strategy in Malaysia",
+    "task": "BYD Malaysia target customer segments",
+    "status": "error",
+    "detail": "unsupported application/pdf"
+   },
+   {
+    "url": "https://research-methodology.net/category/segment-target-position",
+    "title": "Research-Methodology — BYD segmentation, targeting and positioning",
+    "task": "BYD Malaysia target customer segments",
+    "status": "saved",
+    "detail": "3 verified claims saved",
+    "source_id": "s_c513f18c"
+   },
+   {
+    "url": "https://www.researchgate.net/publication/258519408_Market_segmentation_in_Malaysia_by_using_psychographic_dimensions_for_unit_trust_products",
+    "title": "Market segmentation in Malaysia by using psychographic ...",
+    "task": "BYD Malaysia target customer segments",
+    "status": "blocked",
+    "detail": "HTTP 403"
+   },
+   {
+    "url": "https://byd.simemotors.my/about-byd",
+    "title": "About BYD | BYD Malaysia by Sime Motors",
+    "task": "BYD Malaysia target customer segments",
+    "status": "saved",
+    "detail": "4 verified claims saved",
+    "source_id": "s_586f8981"
+   },
+   {
+    "url": "https://byd.simemotors.my/blog/the-2026-byd-atto-3-is-launching-on-5th-june-2026.html",
+    "title": "The 2026 BYD ATTO 3 Is Launching On 5th June 2026! | BYD Malaysia by Sime Motors",
+    "task": "BYD Malaysia promotional events",
+    "status": "saved",
+    "detail": "2 verified claims saved",
+    "source_id": "s_8b61f160"
+   },
+   {
+    "url": "https://byd.simemotors.my/blog/category/events.html",
+    "title": "BYD Malaysia by Sime Motors — Events",
+    "task": "BYD Malaysia promotional events",
+    "status": "saved",
+    "detail": "12 verified claims saved",
+    "source_id": "s_2f639919"
+   }
+  ],
+  "example": true
+ }
+}
