@@ -40,12 +40,3 @@ still answers from the graph but marks research tasks as failed.
 Storage is SQLite (`better-sqlite3`). Search results, pages and model calls are cached;
 `DEMO_MODE=1` answers from the cache only. `GET /api/export` exports all notes as Markdown
 with `[[wikilinks]]`.
-
-## Honest limits
-
-- The demo graph (`lib/seed.ts`) was gathered from the cited public pages on 10 Oct 2026, but its
-  evidence extracts were condensed, not copied verbatim. `npm run check` lists them as unchecked
-  (no cached copy). Notes the live agent adds carry verbatim, validated snippets.
-- On Vercel the database lives in `/tmp`: research added there lasts only while that server
-  instance is warm. A hosted database is needed for persistent research on Vercel.
-- Retrieval is keyword-based (phase 1); embeddings are phase 2.
