@@ -1,7 +1,7 @@
 /* Agent pipeline:
    Planner → Retriever → (gaps) Researcher → Extractor → Validator → Graph writer → Retriever → Answerer.
    Each step streams its status to the UI through `emit`. */
-import { callJSON, MODELS, anthropic } from './llm.ts';
+import { callJSON, MODELS, requireLlmKey } from './llm.ts';
 import { allNotes, newId, now, saveRun, writeNotes, type CandidateNote } from './store.ts';
 import { coverage, expand, searchNotes } from './retrieve.ts';
 import { allowedHost, fetchPage, search, type Page } from './web.ts';
@@ -18,7 +18,7 @@ export async function runAgent(question: string, mode: Run['mode'], emit: Emit):
   emit({ type: 'run', run_id: run.id });
   const tasks = () => emit({ type: 'tasks', tasks: run.tasks.map(t => ({ ...t })) });
   try {
-    anthropic(); // fails fast when no key is configured
+    requireLlmKey(); // fails fast when no key is configured
     let notes = allNotes();
 
     emit({ type: 'step', label: 'Planning research tasks' });
@@ -180,7 +180,7 @@ async function answer(question: string, mode: Run['mode'], context: Note[], note
   const a = await callJSON<Answer>({
     name: 'answer',
     maxTokens: 4000,
-    system: 'You answer a Malaysian car dealership owner using ONLY the claims provided. Every sentence must cite one or more claim ids. ' +
+    system: 'You answer a Malaysian car dealership owner using ONLY the claims provided. Every sentence must cite one or more claim ids in its cites field (not in the text). ' +
       'Mark judgments as inference and still cite the claims they rest on. Say when claims are conflicting or stale. ' +
       'Anything the claims do not cover goes in not_found — never fill gaps from memory. Plain, short sentences. ' +
       (mode === 'report'
@@ -199,7 +199,9 @@ async function answer(question: string, mode: Run['mode'], context: Note[], note
 export function enforceCitations(a: Answer, ids: Set<string>): Answer {
   const fix = (s: Sentence): Sentence | null => {
     const cites = [...new Set((s.cites ?? []).map(c => c.replace(/[[\]]/g, '')).filter(c => ids.has(c)))];
-    return cites.length ? { ...s, cites } : null;
+    // Chips show the sources, so drop any ids the model wrote into the text.
+    const text = s.text.replace(/\s*\[[a-z0-9_.]+\]/gi, '').trim();
+    return cites.length ? { ...s, text, cites } : null;
   };
   const sections = a.sections.map(s => ({ ...s, sentences: s.sentences.map(fix).filter((x): x is Sentence => !!x) })).filter(s => s.sentences.length);
   let lead = fix(a.lead);

@@ -201,7 +201,7 @@ export default function InsightApp() {
         <section className="thread" aria-label="Conversation">
           <div className="u-msg">{live.question}</div>
           <Plan tasks={live.tasks} step={live.step} state={live.running ? 'run' : live.error ? 'fail' : 'done'} />
-          {live.error && <div className="err">{live.error}{/ANTHROPIC_API_KEY/.test(live.error) ? ' — add the key to .env.local (or the Vercel project settings) to run the live agent. The demo graph and example runs still work.' : ''}</div>}
+          {live.error && <div className="err">{live.error}{/_API_KEY/.test(live.error) ? ' — add the key to .env.local (or the Vercel project settings) to run the live agent. The demo graph and example runs still work.' : ''}</div>}
           {r?.answer && <AnswerCard a={r.answer} run={r} />}
           <Composer onAsk={q => ask(q)} />
         </section>

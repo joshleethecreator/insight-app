@@ -1,8 +1,7 @@
 /* search() and fetchPage(): the only ways the agent touches the web.
-   Search uses Claude's web search tool; pages are fetched directly so the validator can check
+   Search uses the Tavily API; pages are fetched directly so the validator can check
    evidence against the exact text. robots.txt is honoured, logins and social sites are skipped,
    every call has a timeout, and results are cached. */
-import { anthropic, MODELS } from './llm.ts';
 import { cached, hashKey } from './store.ts';
 
 const UA = 'InsightResearchBot/0.1 (hackathon demo; respects robots.txt)';
@@ -11,20 +10,19 @@ const SKIP = /(^|\.)(linkedin\.com|facebook\.com|instagram\.com|x\.com|twitter\.
 
 export interface SearchHit { url: string; title: string; page_age?: string }
 
+/** Web search via the Tavily API (TAVILY_API_KEY), boosted to Malaysian results. */
 export async function search(query: string): Promise<SearchHit[]> {
   return cached(hashKey('search', query), async () => {
-    const msg = await anthropic().messages.create({
-      model: MODELS.main,
-      max_tokens: 1024,
-      tools: [{ type: 'web_search_20250305', name: 'web_search', max_uses: 2, user_location: { type: 'approximate', country: 'MY' } }],
-      messages: [{ role: 'user', content: `Search the web for: ${query}\nPrefer Malaysian official brand pages and Malaysian motoring news. Reply "done" when you have searched.` }],
-    }, { timeout: 60_000 });
-    const hits: SearchHit[] = [];
-    for (const block of msg.content) {
-      if (block.type !== 'web_search_tool_result' || !Array.isArray(block.content)) continue;
-      for (const r of block.content) if (r.type === 'web_search_result') hits.push({ url: r.url, title: r.title, page_age: r.page_age ?? undefined });
-    }
-    return hits;
+    if (!process.env.TAVILY_API_KEY) throw new Error('TAVILY_API_KEY is not set, so the agent cannot search the web');
+    const res = await fetch('https://api.tavily.com/search', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json', authorization: `Bearer ${process.env.TAVILY_API_KEY}` },
+      body: JSON.stringify({ query, topic: 'general', country: 'malaysia', search_depth: 'basic', max_results: 8 }),
+      signal: AbortSignal.timeout(30_000),
+    });
+    if (!res.ok) throw new Error(`Search failed: HTTP ${res.status}`);
+    const data = (await res.json()) as { results?: { url: string; title: string; published_date?: string | null }[] };
+    return (data.results ?? []).map(r => ({ url: r.url, title: r.title, page_age: r.published_date ?? undefined }));
   });
 }
 
