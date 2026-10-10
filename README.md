@@ -8,6 +8,28 @@ saves atomic linked notes, and answers with a citation on every sentence.
 
 Demo market: Malaysian automotive (Toyota, Tesla, Mercedes-Benz, BYD, Perodua).
 
+## Interface
+
+### Chat — ask, plan, answer
+Ask anything in plain language. The agent shows its plan, reads pages it found, and answers with chips on every sentence that open the underlying source in the graph.
+
+![Chat view](screenshots/chat-view.png)
+
+### Knowledge graph — see every link
+Every note the agent wrote is on the graph: big circles are companies, the cloud around each one is the sources that mention them. Click a node to trace what it links to, or filter by note type.
+
+![Knowledge graph view](screenshots/graph-view.png)
+
+### Reports — competitor briefs on demand
+"New report: all companies" writes a one-page brief with a recommendation, one section per brand, and a "Risks to watch" section. Conflicting claims are flagged inline, not hidden. Copy Markdown or download as `.md`.
+
+![Reports view](screenshots/report-view.png)
+
+### Sources — every claim is traceable
+Every source the agent read is listed here with its publication date, how many notes it supports, and a direct "View in graph" jump into where its claims appear.
+
+![Sources view](screenshots/sources-view.png)
+
 ## Run locally
 
 ```bash
