@@ -139,7 +139,7 @@ async function extract(task: Task, page: Page, notes: Note[]): Promise<Extractio
       notes: { type: 'array', items: { type: 'object', required: ['type', 'title', 'company', 'body_md', 'claims', 'links'], properties: {
         type: { type: 'string', enum: CONTENT_TYPES },
         title: { type: 'string' },
-        company: { type: 'string', description: 'brand, e.g. "Toyota"; empty for events' },
+        company: { type: 'string', description: 'the car brand this note is about, e.g. "Tesla" — never a bank, dealer or media outlet; empty for events' },
         body_md: { type: 'string', description: 'one or two sentences summarising the claims' },
         claims: { type: 'array', items: { type: 'object', required: ['text', 'evidence_snippet'], properties: {
           text: { type: 'string' }, evidence_snippet: { type: 'string' } } } },

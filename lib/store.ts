@@ -146,9 +146,12 @@ export function findExisting(c: { type: string; title: string; company: string }
     const hit = notes.find(n => n.type === 'Company' && co && n.company.toLowerCase() === co);
     if (hit) return hit;
   }
-  return notes.find(n => n.type === c.type && sameCo(n) && (norm(n.title) === t ||
-    (t.length >= 4 && norm(n.title).length >= 4 && (norm(n.title).includes(t) || t.includes(norm(n.title))))));
+  // Same type and same title is the same thing whatever company was guessed; looser matches need the same company.
+  return notes.find(n => n.type === c.type && norm(n.title) === t) ?? notes.find(n => n.type === c.type && sameCo(n) &&
+    t.length >= 4 && norm(n.title).length >= 4 && (norm(n.title).includes(t) || t.includes(norm(n.title))));
 }
+
+const ID_PREFIX: Record<string, string> = { Company: 'c', Product: 'p', Price: 'pr', Campaign: 'cm', Event: 'e' };
 
 const amounts = (s: string) => new Set([...s.matchAll(/RM\s?([\d,]{3,})/gi)].map(m => m[1].replace(/,/g, '')));
 
@@ -188,7 +191,7 @@ export function writeNotes(source: SourceInput, candidates: CandidateNote[], db 
         if (fresh.length && !updated.includes(noteId)) updated.push(noteId);
         existing.claims = (db.prepare('select * from claims where note_id = ?').all(noteId) as Claim[]);
       } else {
-        noteId = newId(cand.type[0].toLowerCase());
+        noteId = newId(ID_PREFIX[cand.type]);
         insertNote(db, { id: noteId, type: cand.type, title: cand.title, company: cand.company, body_md: cand.body_md }, t);
         for (const c of cand.claims) insertClaim(db, noteId, c, srcId);
         const fresh: Note = { id: noteId, type: cand.type, title: cand.title, company: cand.company, body_md: cand.body_md,
