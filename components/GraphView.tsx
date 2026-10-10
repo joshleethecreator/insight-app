@@ -3,7 +3,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { H, W, layoutGraph } from '@/lib/graphLayout';
 import { NOTE_TYPES, type Note, type NoteType } from '@/lib/types';
 
-const RAD: Record<NoteType, number> = { Company: 34, Event: 11, Product: 8, Campaign: 8, Price: 5, Source: 3.5 };
+const RAD: Record<NoteType, number> = { Company: 34, Event: 8, Product: 8, Campaign: 8, Price: 5, Source: 3.5 };
 const TYPE_COLOR: Record<NoteType, string> = { Company: '#4A5A7A', Product: '#2456C7', Price: '#17716A', Campaign: '#9A5A0C', Event: '#8A3B55', Source: '#556075' };
 const PALETTE = ['#F2CFA5', '#6FD3F5', '#D6A9E0', '#F5D77A', '#B48CF2', '#9EE0B4', '#F5A9A0', '#A9C8F5'];
 const SHORT: Record<string, string> = { 'Mercedes-Benz': 'Mercedes' };
@@ -120,7 +120,9 @@ export default function GraphView({ notes, selected, onSelect, fresh }: {
               const style: React.CSSProperties = { left: p.x, top: p.y, width: size, height: size, background: n.type === 'Source' || n.type === 'Price' ? 'transparent' : c };
               if (n.type === 'Price') style.border = `2px solid ${c}`;
               if (n.type === 'Company' && selected !== n.id) style.boxShadow = '0 0 0 6px rgba(255,255,255,.06),0 6px 24px rgba(0,0,0,.45)';
-              const label = n.type === 'Company' || n.type === 'Event' ? 'glab' : n.type === 'Product' || (selected && (selected === n.id || nb.has(n.id)) && n.type !== 'Source') ? 'glab small' : null;
+              // Few labels by default (companies, products, market-wide events); the rest show on hover or when selected.
+              const focus = !!selected && (selected === n.id || nb.has(n.id)) && n.type !== 'Source';
+              const label = n.type === 'Company' ? 'glab' : n.type === 'Product' || (n.type === 'Event' && !n.company) || focus ? 'glab small' : null;
               return (
                 <span key={n.id}>
                   <button className={`gn${dim ? ' dim' : ''}${selected === n.id ? ' sel' : ''}${fresh.has(n.id) ? ' new' : ''}`} style={style}
