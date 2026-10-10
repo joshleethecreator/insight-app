@@ -1,0 +1,47 @@
+# Insight — Competitor Intelligence Graph Agent
+
+A car dealership owner asks anything ("Tesla", "How should we compete on EV pricing?").
+The agent plans tasks, checks the knowledge graph, researches public sources for gaps,
+saves atomic linked notes, and answers with a citation on every sentence.
+
+Demo market: Malaysian automotive (Toyota, Tesla, Mercedes-Benz, BYD, Perodua).
+
+## Run locally
+
+```bash
+npm install
+cp .env.example .env.local   # add ANTHROPIC_API_KEY
+npm run dev                  # http://localhost:3000
+npm run check                # citation, snippet and duplicate checks
+```
+
+Without a key the demo graph, example answer and example report still work; asking a new
+question shows a "key not set" message.
+
+## How it works
+
+`POST /api/ask` streams Server-Sent Events while the pipeline runs (`lib/agent.ts`):
+
+1. **Planner** — request → 2–6 tasks (company, note type, search query).
+2. **Retriever** — keyword search over notes + link expansion (`lib/retrieve.ts`, minisearch).
+3. **Researcher** — for uncovered tasks: Claude web search, then direct page fetch that honours
+   robots.txt, skips LinkedIn/social/login sites, and times out (`lib/web.ts`).
+4. **Extractor** — page text → candidate notes, claims, links (structured JSON).
+5. **Validator** — a claim is kept only if its evidence snippet is found in the fetched text
+   and a second model call agrees the snippet supports it.
+6. **Graph writer** — merges into existing notes instead of duplicating; conflicting prices are
+   both kept and marked; notes with zero claims are not saved (`lib/store.ts`).
+7. **Answerer** — writes only from retrieved claims; uncited sentences are dropped.
+
+Storage is SQLite (`better-sqlite3`). Search results, pages and model calls are cached;
+`DEMO_MODE=1` answers from the cache only. `GET /api/export` exports all notes as Markdown
+with `[[wikilinks]]`.
+
+## Honest limits
+
+- The demo graph (`lib/seed.ts`) was gathered from the cited public pages on 10 Oct 2026, but its
+  evidence extracts were condensed, not copied verbatim. `npm run check` lists them as unchecked
+  (no cached copy). Notes the live agent adds carry verbatim, validated snippets.
+- On Vercel the database lives in `/tmp`: research added there lasts only while that server
+  instance is warm. A hosted database is needed for persistent research on Vercel.
+- Retrieval is keyword-based (phase 1); embeddings are phase 2.
